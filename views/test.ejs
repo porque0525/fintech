@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+    <h1>안녕하세요 EJS 템플릿 사용한 화면입니다.</h1>
+    <p>EJS를 사용하시면 편하게 화면을 구성하실 수 있습니다.</p>
+    <hr>아이디: <input type="text" id="userId"></hr>
+    <br>
+    <hr>비밀번호: <input type="text" id="userPassword"></hr>
+    <br>
+    <button type="button" id="loginBtn">로그인</button>
+    <script  
+    src="https://code.jquery.com/jquery-3.5.1.js"  
+    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="  
+    crossorigin="anonymous"></script>
+    <script>
+        $("#loginBtn").click(function() {
+            var userId = $("#userId").val()
+            var userPassword = $("#userPassword").val()
+            alert(userId);
+            
+            $.ajax({  // http를 통해서 특정 url에 요청을 날리는..request와 똑같은.
+                    url:'/ajaxTest',
+                    type : 'POST',
+                    data : {
+                        sendUserId: userId,
+                        sendUserPassword: userPassword
+                    },
+                    success:function(response){
+                        console.log(response);
+                    }
+                })
+        });
+    </script>
+</html>
